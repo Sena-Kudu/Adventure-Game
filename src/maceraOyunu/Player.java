@@ -9,9 +9,11 @@ public class Player {
     private String name;
     private String charName;
     private Scanner input = new Scanner(System.in);
+    private Inventory inventory;
 
     public Player(String name) {
         this.name = name;
+        this.inventory = new Inventory();
     }
 
     public void selectChar(){
@@ -53,12 +55,21 @@ public class Player {
 
     }
 
+    public void printInfo(){
+        System.out.println(
+                "Silahınız : " +this.getInventory().getWeapon().getName()+
+                ", Hasarınız : "+this.getDamage()+
+                ", Sağlık : "+this.getHealth()+
+                ", Para : " +this.getMoney()
+                );
+    }
+
     public int getDamage() {
         return damage;
     }
 
     public void setDamage(int damage) {
-        this.damage = damage;
+        this.damage = damage + this.getInventory().getWeapon().getDamage();
     }
 
     public int getHealth() {
@@ -91,5 +102,13 @@ public class Player {
 
     public void setCharName(String charName) {
         this.charName = charName;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }
