@@ -1,0 +1,2 @@
+package maceraOyunu;public class NormalLoc {
+}
